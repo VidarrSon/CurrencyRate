@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Currency Rates</title>
+</head>
+<body>
+<h1>Currency Rates</h1>
+<br>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+<br>
+<form th:action="@{/archive/{date}(date=${currency.getDate()})}"
+      method="get">
+    <table>
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>UAH</th>
+            <th>EUR</th>
+            <th>GBP</th>
+            <th>NZD</th>
+            <th>AUD</th>
+            <th>JPY</th>
+        </tr>
+        </thead>
+        <tbody>
+        <td th:text="${currency.getDate()}"></td>
+        <td th:text="${currency.getUAH()}"></td>
+        <td th:text="${currency.getEUR()}"></td>
+        <td th:text="${currency.getGBP()}"></td>
+        <td th:text="${currency.getNZD()}"></td>
+        <td th:text="${currency.getAUD()}"></td>
+        <td th:text="${currency.getJPY()}"></td>
+        </tbody>
+    </table>
+</form>
+
+<br>
+<a th:href="@{/archive/{date}(date=${currency.getPreviousDate()})}">Previous Rate</a>
+<br>
+<br>
+<a th:href="@{/live}">Back to Live Rate</a>
+
+</body>
+</html>
